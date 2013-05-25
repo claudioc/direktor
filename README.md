@@ -1,7 +1,7 @@
 Direktor
 ========
 
-Director is a technique - in the form of a JavaScript library - to make it possible to
+Direktor is a technique - in the form of a JavaScript library - to make it possible to
 bind functions execution when a certain number in inside a range of values.
 
 You define an `Emitter` which will be the thing that emits the numbers and a whichever number

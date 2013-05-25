@@ -81,7 +81,6 @@
   Direktor.Player.prototype.run = function(Emitter) {
     this.Emitter = Emitter;
     this.Emitter.receive(function(value) {
-      console.log("Received %d", value);
       if (value == this.prev) {
         return;
       }
