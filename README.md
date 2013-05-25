@@ -66,16 +66,16 @@ will _jump over_ that interval (say, goes from the value 2 to the value 70 in on
 Creating an emitter
 -------------------
 
-The simplest emitter that I can think of is a time based one. An emitter that emit a number every half a second, for example.
+The simplest emitter that I can think of is a time based one. An emitter that emits a number every half a second, for example.
 
 This is the very minimum that you need to do to define such emitter:
 
 ```javascript
 
-var MyEmitter = new Direktor.Emitter();
+var timedEmitter = new Direktor.Emitter();
 
 // The start method will be automatically run by the player on Player.run()
-MyEmitter.start = function() {
+timedEmitter.start = function() {
   setInterval(function() {
     this.emit();
   }.bind(this), 500);
@@ -86,15 +86,16 @@ You probably better doing something like that, so you're able to eventually stop
 
 ```javascript
 
-var MyEmitter = new Direktor.Emitter();
+var timedEmitter = new Direktor.Emitter();
 
-MyEmitter.start = function() {
+timedEmitter.start = function() {
   this.interval = setInterval(function() {
+    // The emitter will increase or decrease the value internally
     this.emit();
   }.bind(this), 500);
 }
 
-MyEmitter.stop = function() {
+timedEmitter.stop = function() {
   clearInterval(this.interval);
 }
 ```
@@ -106,6 +107,7 @@ A more interesting emitter would be one bound to the scroll event of a div (usin
 var scrollEmitter = new Direktor.Emitter();
 
 $("#wrap").on("scroll", function(e) {
+  // The tracks will receive the value of the scollLeft
   scrollEmitter.emit(e.target.scrollLeft);
 });
 
@@ -122,6 +124,7 @@ $("#btn-fwd").on("click", function() {
 });
 
 $("#btn-fwd-5").on("click", function() {
+  // The emitter value is publicly exposed
   btnEmitter.emit(btnEmitter.value + 5);
 });
 
