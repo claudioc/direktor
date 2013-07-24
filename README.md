@@ -77,7 +77,7 @@ var timedEmitter = new Direktor.Emitter();
 // The start method will be automatically run by the player on Player.run()
 timedEmitter.start = function() {
   setInterval(function() {
-    this.emit();
+    this.yield();
   }.bind(this), 500);
 }
 ```
@@ -91,7 +91,7 @@ var timedEmitter = new Direktor.Emitter();
 timedEmitter.start = function() {
   this.interval = setInterval(function() {
     // The emitter will increase or decrease the value internally
-    this.emit();
+    this.yield();
   }.bind(this), 500);
 }
 
@@ -108,7 +108,7 @@ var scrollEmitter = new Direktor.Emitter();
 
 $("#wrap").on("scroll", function(e) {
   // The tracks will receive the value of the scollLeft
-  scrollEmitter.emit(e.target.scrollLeft);
+  scrollEmitter.yield(e.target.scrollLeft);
 });
 
 ```
@@ -120,20 +120,20 @@ Or you can manually control everything, using buttons:
 var btnEmitter = new Direktor.Emitter();
 
 $("#btn-fwd").on("click", function() {
-  btnEmitter.emit();
+  btnEmitter.yield();
 });
 
 $("#btn-fwd-5").on("click", function() {
   // The emitter value is publicly exposed
-  btnEmitter.emit(btnEmitter.value + 5);
+  btnEmitter.yield(btnEmitter.value + 5);
 });
 
 $("#btn-bwd").on("click", function() {
-  btnEmitter.emit();
+  btnEmitter.yield();
 });
 
 $("#btn-bwd-5").on("click", function() {
-  btnEmitter.emit(btnEmitter.value - 5);
+  btnEmitter.yield(btnEmitter.value - 5);
 });
 ```
 

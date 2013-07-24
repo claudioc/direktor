@@ -7,7 +7,7 @@
 */
 
 (function() {
-  
+
   "use strict";
 
   var Direktor = {};
@@ -23,7 +23,7 @@
     this.callback = callback;
   }
 
-  Direktor.Emitter.prototype.emit = function(value) {
+  Direktor.Emitter.prototype.yield = function(value) {
     if (value && isNaN(value)) {
       return;
     }
@@ -80,7 +80,7 @@
 
   Direktor.Player.prototype.run = function(Emitter) {
     this.Emitter = Emitter;
-    this.Emitter.receive(function(value) {
+    this. Emitter.receive(function(value) {
       if (value == this.prev) {
         return;
       }
@@ -127,11 +127,8 @@
                 data.pointer = 'outside';
               }
             }
-
           }
-
         }
-
       }.bind(this));
     }.bind(this));
     this.Emitter.start();
@@ -143,7 +140,7 @@
 
   Direktor.Player.prototype.addTrack = function(track, lowest, highest) {
     lowest = parseInt(lowest, 10);
-    highest = parseInt(highest,10);
+    highest = parseInt(highest, 10);
     if (isNaN(lowest)) {
       lowest = 0;
     }
